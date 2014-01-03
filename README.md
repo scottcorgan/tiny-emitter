@@ -14,11 +14,11 @@ npm install tiny-emitter --save
 var Emitter = require('tiny-emitter');
 var emitter = new Emitter();
 
-emitter.on('some-event', function (arg1) {
+emitter.on('some-event', function (arg1, arg2, arg3) {
  //  
 });
 
-emitter.emit('some-event', 'arg1 value');
+emitter.emit('some-event', 'arg1 value', 'arg2 value', 'arg3 value');
 ```
  
 ## Instance Methods
