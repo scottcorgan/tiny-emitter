@@ -40,6 +40,8 @@ Unsubscribe from an event or all events. If no callback is provided, it unsubscr
 
 ### emit(event[, arguments...])
 
+Trigger a named event
+
 * `event` - the event name to emit
 * `arguments...` - any number of arguments to pass to the event subscribers
  
