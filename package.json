@@ -1,0 +1,30 @@
+{
+  "name": "tiny-emitter",
+  "version": "0.1.0",
+  "description": "A tiny (less than 500 bytes) event emitter library",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/index.js | node_modules/.bin/tspec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/scottcorgan/tiny-emitter.git"
+  },
+  "keywords": [
+    "event",
+    "emitter",
+    "pubsub",
+    "tiny",
+    "events",
+    "bind"
+  ],
+  "author": "Scott Corgan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/scottcorgan/tiny-emitter/issues"
+  },
+  "devDependencies": {
+    "tape": "~2.3.2",
+    "tap-spec": "~0.1.1"
+  }
+}
