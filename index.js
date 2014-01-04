@@ -40,12 +40,13 @@ Emitter.prototype = {
     var e = this.e;
     var evts = e[name];
     
+    if (!evts) this;
+    
     if (!callback) {
       e[name] = [];
     }
     else {
       for (var idx in evts) {
-        if (!evts || !evts[idx]) continue;
         if (evts[idx].fn !== callback) continue;
         
         evts.splice(idx, 1);
