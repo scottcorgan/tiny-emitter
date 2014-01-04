@@ -114,3 +114,29 @@ test('removes an event inside another event', function (t) {
   
   emitter.emit('test');
 });
+
+test('event is emitted even if unsubscribed in the event callback', function (t) {
+  var emitter = new Emitter();
+  var calls = 0;
+  var fn = function () {
+    calls += 1;
+    emitter.off('test', fn);
+  };
+  
+  emitter.on('test', fn);
+  
+  emitter.on('test', function () {
+    calls += 1;
+  });
+  
+  emitter.on('test', function () {
+    calls += 1;
+  });
+  
+  process.nextTick(function () {
+    t.equal(calls, 3, 'all callbacks were called');
+    t.end();
+  });
+  
+  emitter.emit('test');
+});
