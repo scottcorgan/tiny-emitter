@@ -23,6 +23,7 @@
     "tests",
     ".gitignore",
     "index.js",
-    "package.json"
+    "package.json",
+    "bower.json"
   ]
 }
