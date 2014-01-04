@@ -1,38 +1,44 @@
 var Emitter = function () {
-  this._events = {};
+  this.e = {};
 };
 
-Emitter.prototype.on = function (evt, callback, context) {
-  this._events[evt] = this._events[evt] || [];
-  this._events[evt].push({
+Emitter.prototype.on = function (name, callback, ctx) {
+  var e = this.e;
+  
+  e[name] = e[name] || [];
+  e[name].push({
     fn: callback,
-    context: context || null
+    ctx: ctx || null
   });
   
   return this;
 };
 
-Emitter.prototype.emit = function (evt) {
+Emitter.prototype.emit = function (name) {
   var data = [].slice.call(arguments, 1);
-  var evtArr = this._events[evt] || [];
+  var evtArr = this.e[name] || [];
   
   for (var i in evtArr) {
-    evtArr[i].fn.apply(evtArr[i].context, data);
+    evtArr[i].fn.apply(evtArr[i].ctx, data);
   }
   
   return this;
 };
 
-Emitter.prototype.off = function (evt, callback) {
-  var self = this;
+Emitter.prototype.off = function (name, callback) {
+  var e = this.e;
+  var evts = e[name];
   
-  if (!callback) return this._events[evt] = [];
-  
-  for (var idx in this._events[evt]) {
-    if (!this._events[evt] || !this._events[evt][idx]) continue;
-    if (this._events[evt][idx].fn !== callback) continue;
-    
-    this._events[evt].splice(idx, 1);
+  if (!callback) {
+    e[name] = [];
+  }
+  else {
+    for (var idx in evts) {
+      if (!evts || !evts[idx]) continue;
+      if (evts[idx].fn !== callback) continue;
+      
+      evts.splice(idx, 1);
+    }
   }
   
   return this;

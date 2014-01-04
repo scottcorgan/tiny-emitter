@@ -5,7 +5,7 @@ test('subscribes to an event', function (t) {
   var emitter = new Emitter();
   emitter.on('test', function () {});
   
-  t.equal(emitter._events.test.length, 1, 'subscribed to event');
+  t.equal(emitter.e.test.length, 1, 'subscribed to event');
   t.end();
 });
 
