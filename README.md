@@ -31,6 +31,14 @@ Subscribe to an event
 * `callback` - the function to call when event is emitted
 * `context` - (OPTIONAL) - the context to bind the event callback to
 
+### once(event, callback[, context])
+
+Subscribe to an event only **once**
+
+* `event` - the name of the event to subscribe to
+* `callback` - the function to call when event is emitted
+* `context` - (OPTIONAL) - the context to bind the event callback to
+
 ### off(event[, callback])
 
 Unsubscribe from an event or all events. If no callback is provided, it unsubscribes you from all events.

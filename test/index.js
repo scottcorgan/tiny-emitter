@@ -23,6 +23,32 @@ test('subscribes to an event with context', function (t) {
   emitter.emit('test');
 });
 
+test('subscibes only once to an event', function (t) {
+  var emitter = new Emitter();
+  
+  emitter.once('test', function () {
+    t.equal(emitter.e.test.length, 0, 'removed event from list');
+    t.end();
+  });
+  
+  emitter.emit('test');
+});
+
+test('keeps context when subscribed only once', function (t) {
+  var emitter = new Emitter();
+  var context = {
+    contextValue: true
+  };
+  
+  emitter.once('test', function () {
+    t.ok(this.contextValue, 'is in context');
+    t.equal(emitter.e.test.length, 0, 'not subscribed anymore');
+    t.end();
+  }, context);
+  
+  emitter.emit('test');
+});
+
 test('emits an event', function (t) {
   var emitter = new Emitter();
   
@@ -74,3 +100,17 @@ test('unsubscribes single event with name and callback', function (t) {
   });
 });
 
+test('removes an event inside another event', function (t) {
+  var emitter = new Emitter();
+  
+  emitter.on('test', function () {
+    t.equal(emitter.e.test.length, 1, 'event is still in list');
+    
+    emitter.off('test');
+    
+    t.equal(emitter.e.test.length, 0, 'event is gone from list');
+    t.end();
+  });
+  
+  emitter.emit('test');
+});

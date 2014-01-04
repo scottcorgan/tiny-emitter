@@ -1,6 +1,6 @@
 {
   "name": "tiny-emitter",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A tiny (less than 500 bytes) event emitter library",
   "main": "index.js",
   "scripts": {
