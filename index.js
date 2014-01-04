@@ -1,6 +1,6 @@
-var Emitter = function () {
+function Emitter () {
   this.e = {};
-};
+}
 
 Emitter.prototype = {
   on: function (name, callback, ctx) {
@@ -55,6 +55,5 @@ Emitter.prototype = {
     return this;
   }
 };
-
 
 module.exports = Emitter;
