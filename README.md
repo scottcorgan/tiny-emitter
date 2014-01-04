@@ -1,6 +1,6 @@
 # tiny-emitter
  
-A tiny (less than 500 bytes) event emitter library
+A tiny (less than 500 bytes) event emitter library. Works with [Browserify](http://browserify.org).
  
 ## Install
  
