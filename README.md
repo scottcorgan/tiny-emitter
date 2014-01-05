@@ -17,7 +17,7 @@ bower install tiny-emitter --save
 ```
  
 ```html
-<script src="bower_compontents/tiny-emitter/dist/tinyemitter.min.js"></script>
+<script src="bower_components/tiny-emitter/dist/tinyemitter.min.js"></script>
 ``` 
 
 ## Usage
