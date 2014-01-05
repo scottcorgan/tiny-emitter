@@ -1,15 +1,14 @@
-function Emitter () {
+function E () {
   this.e = {};
 }
 
-Emitter.prototype = {
+E.prototype = {
   on: function (name, callback, ctx) {
     var e = this.e;
     
-    e[name] = e[name] || [];
-    e[name].push({
+    (e[name] || (e[name] = [])).push({
       fn: callback,
-      ctx: ctx || null
+      ctx: ctx
     });
     
     return this;
@@ -40,23 +39,20 @@ Emitter.prototype = {
   off: function (name, callback) {
     var e = this.e;
     var evts = e[name];
-    var idx;
+    var i;
     
-    if (!evts) return this;
-    
-    if (!callback) {
-      e[name] = [];
-    }
-    else {
-      for (idx in evts) {
-        if (evts[idx].fn !== callback) continue;
-        
-        evts.splice(idx, 1);
+    if (evts && callback) {
+      for (i in evts) {
+        if (evts[i].fn !== callback) continue;
+        evts.splice(i, 1);
       }
+    }
+    else if (evts) {
+      e[name] = [];
     }
     
     return this;
   }
 };
 
-module.exports = Emitter;
+module.exports = E;

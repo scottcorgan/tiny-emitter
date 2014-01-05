@@ -1,13 +1,14 @@
 {
   "name": "tiny-emitter",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "A tiny (less than 1k) event emitter library",
   "main": "index.js",
   "scripts": {
     "test": "node test/index.js | node_modules/.bin/tspec",
     "bundle": "node_modules/.bin/browserify index.js > dist/tinyemitter.js -s TinyEmitter && echo 'Bundled'",
-    "minify": "node_modules/.bin/uglifyjs dist/tinyemitter.js -o dist/tinyemitter.min.js && echo 'Minified'",
-    "build": "npm test && npm run bundle && npm run minify"
+    "minify": "node_modules/.bin/uglifyjs dist/tinyemitter.js -o dist/tinyemitter.min.js -m && echo 'Minified'",
+    "build": "npm test && npm run bundle && npm run minify",
+    "size": "node_modules/.bin/uglifyjs index.js -o minified.js -m && ls -l && rm minified.js"
   },
   "repository": {
     "type": "git",
