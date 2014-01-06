@@ -1,10 +1,10 @@
 {
   "name": "tiny-emitter",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "A tiny (less than 1k) event emitter library",
   "main": "index.js",
   "scripts": {
-    "test": "node test/index.js | node_modules/.bin/tspec",
+    "test": "node_modules/.bin/testling | node_modules/.bin/tspec",
     "bundle": "node_modules/.bin/browserify index.js > dist/tinyemitter.js -s TinyEmitter && echo 'Bundled'",
     "minify": "node_modules/.bin/uglifyjs dist/tinyemitter.js -o dist/tinyemitter.min.js -m && echo 'Minified'",
     "build": "npm test && npm run bundle && npm run minify",
@@ -29,8 +29,24 @@
   },
   "devDependencies": {
     "tape": "~2.3.2",
-    "tap-spec": "~0.1.1",
+    "tap-spec": "~0.1.3",
     "browserify": "~3.18.0",
-    "uglify-js": "~2.4.8"
+    "uglify-js": "~2.4.8",
+    "testling": "~1.5.6"
+  },
+  "testling": {
+    "files": [
+      "test/index.js"
+    ],
+    "browsers": [
+      "iexplore/10.0",
+      "iexplore/9.0",
+      "firefox/16..latest",
+      "chrome/22..latest",
+      "safari/5.1..latest",
+      "ipad/6.0..latest",
+      "iphone/6.0..latest",
+      "android-browser/4.2..latest"
+    ]
   }
 }

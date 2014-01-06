@@ -1,6 +1,8 @@
 # tiny-emitter
  
 A tiny (less than 1k) event emitter library. Works in the browser, in Node, and with [Browserify](http://browserify.org).
+
+[![browser support](https://ci.testling.com/scottcorgan/tiny-emitter.png)](https://ci.testling.com/scottcorgan/tiny-emitter)
  
 ## Install
 
