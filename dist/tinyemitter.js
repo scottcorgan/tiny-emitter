@@ -40,13 +40,13 @@ E.prototype = {
   },
 
   off: function (name, callback) {
-    var e = this.e;
+    var e = this.e || (this.e = {});
     var evts = e[name];
     var liveEvents = [];
     
     if (evts && callback) {
       for (var i = 0, len = evts.length; i < len; i++) {
-        if (evts[i] && evts[i].fn !== callback) liveEvents.push(evts[i]);
+        if (evts[i].fn !== callback) liveEvents.push(evts[i]);
       }
     }
     
