@@ -1,7 +1,7 @@
 {
   "name": "tiny-emitter",
   "main": "dist/tinyemitter.js",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "homepage": "https://github.com/scottcorgan/tiny-emitter",
   "authors": [
     "Scott Corgan <scottcorgan@gmail.com>"

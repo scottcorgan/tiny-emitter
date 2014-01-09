@@ -28,9 +28,10 @@ E.prototype = {
   emit: function (name) {
     var data = [].slice.call(arguments, 1);
     var evtArr = (this.e[name] || []).slice();
-    var i;
+    var i = 0;
+    var len = evtArr.length;
     
-    for (i in evtArr) {
+    for (i; i < len; i++) {
       evtArr[i].fn.apply(evtArr[i].ctx, data);
     }
     
@@ -40,11 +41,12 @@ E.prototype = {
   off: function (name, callback) {
     var e = this.e;
     var evts = e[name];
-    var i;
+    var i = 0;
+    var len = evts.length;
     
     if (evts && callback) {
-      for (i in evts) {
-        if (evts[i].fn !== callback) continue;
+      for (i; i < len; i++) {
+        if (evts[i] && evts[i].fn !== callback) continue;
         evts.splice(i, 1);
       }
     }
