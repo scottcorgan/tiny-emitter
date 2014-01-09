@@ -100,6 +100,9 @@ test('unsubscribes single event with name and callback', function (t) {
   });
 });
 
+
+// Test added by https://github.com/lazd
+// From PR: https://github.com/scottcorgan/tiny-emitter/pull/6
 test('unsubscribes single event with name and callback when subscribed twice', function (t) {
   var emitter = new Emitter();
   var fn = function () {
