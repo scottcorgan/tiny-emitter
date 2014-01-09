@@ -42,18 +42,15 @@ E.prototype = {
   off: function (name, callback) {
     var e = this.e;
     var evts = e[name];
-    var i = 0;
-    var len = evts.length;
+    var liveEvents = [];
     
     if (evts && callback) {
-      for (i; i < len; i++) {
-        if (evts[i] && evts[i].fn !== callback) continue;
-        evts.splice(i, 1);
+      for (var i = 0, len = evts.length; i < len; i++) {
+        if (evts[i] && evts[i].fn !== callback) liveEvents.push(evts[i]);
       }
     }
-    else if (evts) {
-      e[name] = [];
-    }
+    
+    e[name] = liveEvents;
     
     return this;
   }

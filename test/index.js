@@ -100,6 +100,46 @@ test('unsubscribes single event with name and callback', function (t) {
   });
 });
 
+test('unsubscribes single event with name and callback when subscribed twice', function (t) {
+  var emitter = new Emitter();
+  var fn = function () {
+    t.ok(false, 'should not get called');
+  };
+
+  emitter.on('test', fn);
+  emitter.on('test', fn);
+  
+  emitter.off('test', fn);
+  emitter.emit('test');
+  
+  process.nextTick(function () {
+    t.equal(emitter.e['test'].length, 0, 'removes all events');
+    t.end();
+  });
+});
+
+test('unsubscribes single event with name and callback when subscribed twice out of order', function (t) {
+  var emitter = new Emitter();
+  var calls = 0;
+  var fn = function () {
+    t.ok(false, 'should not get called');
+  };
+  var fn2 = function () {
+    calls++;
+  };
+
+  emitter.on('test', fn);
+  emitter.on('test', fn2);
+  emitter.on('test', fn);
+  emitter.off('test', fn);
+  emitter.emit('test');
+
+  process.nextTick(function () {
+    t.equal(calls, 1, 'callback was called');
+    t.end();
+  });
+});
+
 test('removes an event inside another event', function (t) {
   var emitter = new Emitter();
   
