@@ -50,7 +50,12 @@ E.prototype = {
       }
     }
     
-    e[name] = liveEvents;
+    // Remove event from queue to prevent memory leak
+    // Suggested by https://github.com/lazd
+    // Ref: https://github.com/scottcorgan/tiny-emitter/commit/c6ebfaa9bc973b33d110a84a307742b7cf94c953#commitcomment-5024910
+    (liveEvents.length) 
+      ? e[name] = liveEvents
+      : delete e[name];
     
     return this;
   }

@@ -27,7 +27,7 @@ test('subscibes only once to an event', function (t) {
   var emitter = new Emitter();
   
   emitter.once('test', function () {
-    t.equal(emitter.e.test.length, 0, 'removed event from list');
+    t.notOk(emitter.e.test, 'removed event from list');
     t.end();
   });
   
@@ -42,7 +42,7 @@ test('keeps context when subscribed only once', function (t) {
   
   emitter.once('test', function () {
     t.ok(this.contextValue, 'is in context');
-    t.equal(emitter.e.test.length, 0, 'not subscribed anymore');
+    t.notOk(emitter.e.test, 'not subscribed anymore');
     t.end();
   }, context);
   
@@ -116,7 +116,7 @@ test('unsubscribes single event with name and callback when subscribed twice', f
   emitter.emit('test');
   
   process.nextTick(function () {
-    t.equal(emitter.e['test'].length, 0, 'removes all events');
+    t.notOk(emitter.e['test'], 'removes all events');
     t.end();
   });
 });
@@ -151,7 +151,7 @@ test('removes an event inside another event', function (t) {
     
     emitter.off('test');
     
-    t.equal(emitter.e.test.length, 0, 'event is gone from list');
+    t.notOk(emitter.e.test, 0, 'event is gone from list');
     t.end();
   });
   
