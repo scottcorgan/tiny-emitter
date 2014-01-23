@@ -188,3 +188,10 @@ test('calling off before any events added does nothing', function (t) {
   emitter.off('test', function () {});
   t.end();
 });
+
+test('emitting event that has not been subscribed to yet', function (t) {
+  var emitter = new Emitter();
+  
+  emitter.emit('some-event', 'some message');
+  t.end();
+});
