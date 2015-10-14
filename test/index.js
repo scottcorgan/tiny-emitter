@@ -195,3 +195,18 @@ test('emitting event that has not been subscribed to yet', function (t) {
   emitter.emit('some-event', 'some message');
   t.end();
 });
+
+test('unsubscribes single event with name and callback which was subscribed once', function (t) {
+  var emitter = new Emitter();
+  var fn = function () {
+    t.ok(false, 'should not get called');
+  }
+
+  emitter.once('test', fn);
+  emitter.off('test', fn);
+  emitter.emit('test')
+
+  process.nextTick(function () {
+    t.end();
+  });
+});
