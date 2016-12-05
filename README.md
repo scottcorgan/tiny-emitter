@@ -93,3 +93,7 @@ Test
 npm install
 npm test
 ```
+
+## License
+
+[MIT](https://github.com/scottcorgan/tiny-emitter/blob/master/LICENSE)
