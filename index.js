@@ -63,4 +63,5 @@ E.prototype = {
   }
 };
 
-module.exports = E;
+module.exports.default = E;
+module.exports.emitter = new E();
