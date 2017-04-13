@@ -24,7 +24,7 @@ bower install tiny-emitter --save
 
 ## Usage
 
-Node and Browserify
+### Node and Browserify
 
 ```js
 var Emitter = require('tiny-emitter');
@@ -37,7 +37,20 @@ emitter.on('some-event', function (arg1, arg2, arg3) {
 emitter.emit('some-event', 'arg1 value', 'arg2 value', 'arg3 value');
 ```
 
-Browser
+Alternatively, you can skip the initialization step by requiring `tiny-emitter/instance` instead. This pulls in an already initialized emitter.
+
+```js
+var emitter = require('tiny-emitter/instance');
+
+emitter.on('some-event', function (arg1, arg2, arg3) {
+ //
+});
+
+emitter.emit('some-event', 'arg1 value', 'arg2 value', 'arg3 value');
+```
+
+
+### Browser
 
 ```js
 var emitter = new TinyEmitter();
