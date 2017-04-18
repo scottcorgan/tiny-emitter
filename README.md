@@ -1,9 +1,7 @@
 # tiny-emitter
- 
-A tiny (less than 1k) event emitter library. Works using CommonJS ([Node](https://nodejs.org/en/), [Browserify](http://browserify.org), [Webpack](https://webpack.js.org/), etc.) and also [Bower](https://bower.io/).
 
-[![browser support](https://ci.testling.com/scottcorgan/tiny-emitter.png)](https://ci.testling.com/scottcorgan/tiny-emitter)
- 
+A tiny (less than 1k) event emitter library.
+
 ## Install
 
 ### npm
@@ -11,27 +9,15 @@ A tiny (less than 1k) event emitter library. Works using CommonJS ([Node](https:
 ```
 npm install tiny-emitter --save
 ```
- 
-### Bower
-
-```
-bower install tiny-emitter --save
-```
- 
-```html
-<script src="bower_components/tiny-emitter/dist/tinyemitter.min.js"></script>
-``` 
 
 ## Usage
-
-### CommonJS (Node, Browserify, Webpack, etc.)
 
 ```js
 var Emitter = require('tiny-emitter');
 var emitter = new Emitter();
 
 emitter.on('some-event', function (arg1, arg2, arg3) {
- //  
+ //
 });
 
 emitter.emit('some-event', 'arg1 value', 'arg2 value', 'arg3 value');
@@ -47,16 +33,6 @@ emitter.on('some-event', function (arg1, arg2, arg3) {
 });
 
 emitter.emit('some-event', 'arg1 value', 'arg2 value', 'arg3 value');
-```
-
-
-### Bower
-
-```js
-var emitter = new TinyEmitter();
-
-emitter.on('some-event', someCallback);
-emitter.emit('some-event');
 ```
 
 ## Instance Methods
@@ -92,7 +68,7 @@ Trigger a named event
 * `arguments...` - any number of arguments to pass to the event subscribers
 
 ## Test and Build
- 
+
 Build (Tests, Browserifies, and minifies)
 
 ```
