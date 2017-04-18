@@ -1,5 +1,5 @@
 var Emitter = require('../index');
-var emitter = require('../instance')
+var emitter = require('../instance');
 var test = require('tape');
 
 test('subscribes to an event', function (t) {
@@ -207,5 +207,11 @@ test('unsubscribes single event with name and callback which was subscribed once
   emitter.off('test', fn);
   emitter.emit('test');
 
+  t.end();
+});
+
+test('exports and instance', function (t) {
+  t.ok(emitter, 'exports and instance')
+  t.ok(emitter instanceof Emitter, 'an instance of the Emitter class');
   t.end();
 });
