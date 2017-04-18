@@ -1,18 +1,18 @@
 # tiny-emitter
  
-A tiny (less than 1k) event emitter library. Works in the browser, in Node, and with [Browserify](http://browserify.org).
+A tiny (less than 1k) event emitter library. Works using CommonJS ([Node](https://nodejs.org/en/), [Browserify](http://browserify.org), [Webpack](https://webpack.js.org/), etc.) and also [Bower](https://bower.io/).
 
 [![browser support](https://ci.testling.com/scottcorgan/tiny-emitter.png)](https://ci.testling.com/scottcorgan/tiny-emitter)
  
 ## Install
 
-Node and Browserify
+### npm
 
 ```
 npm install tiny-emitter --save
 ```
  
-Browser
+### Bower
 
 ```
 bower install tiny-emitter --save
@@ -24,7 +24,7 @@ bower install tiny-emitter --save
 
 ## Usage
 
-### Node and Browserify
+### CommonJS (Node, Browserify, Webpack, etc.)
 
 ```js
 var Emitter = require('tiny-emitter');
@@ -50,7 +50,7 @@ emitter.emit('some-event', 'arg1 value', 'arg2 value', 'arg3 value');
 ```
 
 
-### Browser
+### Bower
 
 ```js
 var emitter = new TinyEmitter();
