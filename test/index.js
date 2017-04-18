@@ -1,4 +1,5 @@
-var Emitter = require('../index.js');
+var Emitter = require('../index');
+var emitter = require('../instance')
 var test = require('tape');
 
 test('subscribes to an event', function (t) {
@@ -75,7 +76,7 @@ test('passes all arguments to event listener', function (t) {
 test('unsubscribes from all events with name', function (t) {
   var emitter = new Emitter();
   emitter.on('test', function () {
-    t.ok(false, 'should not get called');
+    t.fail('should not get called');
   });
   emitter.off('test');
   emitter.emit('test')
@@ -88,7 +89,7 @@ test('unsubscribes from all events with name', function (t) {
 test('unsubscribes single event with name and callback', function (t) {
   var emitter = new Emitter();
   var fn = function () {
-    t.ok(false, 'should not get called');
+    t.fail('should not get called');
   }
 
   emitter.on('test', fn);
@@ -105,7 +106,7 @@ test('unsubscribes single event with name and callback', function (t) {
 test('unsubscribes single event with name and callback when subscribed twice', function (t) {
   var emitter = new Emitter();
   var fn = function () {
-    t.ok(false, 'should not get called');
+    t.fail('should not get called');
   };
 
   emitter.on('test', fn);
@@ -124,7 +125,7 @@ test('unsubscribes single event with name and callback when subscribed twice out
   var emitter = new Emitter();
   var calls = 0;
   var fn = function () {
-    t.ok(false, 'should not get called');
+    t.fail('should not get called');
   };
   var fn2 = function () {
     calls++;
