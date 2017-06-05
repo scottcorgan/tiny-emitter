@@ -1,11 +1,8 @@
-function E () {
-  // Keep this empty so it's easier to inherit from
-  // (via https://github.com/lipsmack from https://github.com/scottcorgan/tiny-emitter/issues/3)
-}
+export default class {
+  e = {}
 
-E.prototype = {
-  on: function (name, callback, ctx) {
-    var e = this.e || (this.e = {});
+  on (name, callback, ctx) {
+    var e = this.e;
 
     (e[name] || (e[name] = [])).push({
       fn: callback,
@@ -13,22 +10,19 @@ E.prototype = {
     });
 
     return this;
-  },
+  }
 
-  once: function (name, callback, ctx) {
-    var self = this;
-    function listener () {
-      self.off(name, listener);
+  once (name, callback, ctx) {
+    const listener = () => {
+      this.off(name, listener);
       callback.apply(ctx, arguments);
     };
 
-    listener._ = callback
     return this.on(name, listener, ctx);
-  },
+  }
 
-  emit: function (name) {
-    var data = [].slice.call(arguments, 1);
-    var evtArr = ((this.e || (this.e = {}))[name] || []).slice();
+  emit (name, ...data) {
+    var evtArr = (this.e[name] || []).slice();
     var i = 0;
     var len = evtArr.length;
 
@@ -37,10 +31,10 @@ E.prototype = {
     }
 
     return this;
-  },
+  }
 
-  off: function (name, callback) {
-    var e = this.e || (this.e = {});
+  off (name, callback) {
+    var e = this.e;
     var evts = e[name];
     var liveEvents = [];
 
@@ -62,5 +56,3 @@ E.prototype = {
     return this;
   }
 };
-
-module.exports = E;
