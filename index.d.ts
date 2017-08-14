@@ -5,4 +5,4 @@ declare class EventEmitter {
   off  (event: string, callback?: Function): EventEmitter;
 }
 
-export default EventEmitter;
+export = EventEmitter;
