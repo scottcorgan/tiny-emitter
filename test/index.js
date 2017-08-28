@@ -3,7 +3,7 @@ import test from 'tape';
 
 test('subscribes to an event', t => {
   const emitter = new Emitter();
-  emitter.on('test', () => {});
+  emitter.on('test', () => { });
 
   t.equal(emitter.e.test.length, 1, 'subscribed to event');
   t.end();
@@ -22,32 +22,6 @@ test('subscribes to an event with context', t => {
 
   emitter.emit('test');
 });
-
-// test('subscibes only once to an event', t => {
-//   const emitter = new Emitter();
-
-//   emitter.once('test', function () {
-//     t.notOk(emitter.e.test, 'removed event from list');
-//     t.end();
-//   });
-
-//   emitter.emit('test');
-// });
-
-// test('keeps context when subscribed only once', t => {
-//   const emitter = new Emitter();
-//   const context = {
-//     contextValue: true
-//   };
-
-//   emitter.once('test', function () {
-//     t.ok(this.contextValue, 'is in context');
-//     t.notOk(emitter.e.test, 'not subscribed anymore');
-//     t.end();
-//   }, context);
-
-//   emitter.emit('test');
-// });
 
 test('emits an event', t => {
   const emitter = new Emitter();
@@ -168,7 +142,7 @@ test('event is emitted even if unsubscribed in the event callback', t => {
 test('calling off before any events added does nothing', t => {
   const emitter = new Emitter();
 
-  emitter.off('test', () => {});
+  emitter.off('test', () => { });
   t.end();
 });
 
@@ -178,18 +152,5 @@ test('emitting event that has not been subscribed to yet', t => {
   emitter.emit('some-event', 'some message');
   t.end();
 });
-
-// test('unsubscribes single event with name and callback which was subscribed once', t => {
-//   const emitter = new Emitter();
-//   const fn = function () {
-//     t.fail('event not unsubscribed');
-//   }
-
-//   emitter.once('test', fn);
-//   emitter.off('test', fn);
-//   emitter.emit('test');
-
-//   t.end();
-// });
 
 
