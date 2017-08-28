@@ -1,2 +1,2 @@
-var E = require('./index.js');
-module.exports = new E();
+import TinyEmitter from './index.js';
+export default new TinyEmitter();
