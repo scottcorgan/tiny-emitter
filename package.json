@@ -4,7 +4,7 @@
   "description": "A tiny (less than 1k) event emitter library",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test tape -r babel-register test/index.js | tap-format-dot",
+    "test": "NODE_ENV=test tape -r babel-register test/*.js | tap-format-dot",
     "bundle": "node_modules/.bin/browserify index.js > dist/tinyemitter.js -s TinyEmitter && echo 'Bundled'",
     "minify": "node_modules/.bin/uglifyjs dist/tinyemitter.js -o dist/tinyemitter.min.js -m && echo 'Minified'",
     "build": "npm test && npm run bundle && npm run minify",
