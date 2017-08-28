@@ -1,4 +1,4 @@
-import Emitter from '../index';
+import Emitter from '../tiny-emitter';
 import test from 'tape';
 
 test('subscribes to an event', t => {

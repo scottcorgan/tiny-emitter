@@ -1,5 +1,5 @@
-import Emitter from '../index';
-import emitter from '../instance';
+import Emitter from '../tiny-emitter';
+import emitter from '../tiny-emitter-instance';
 import test from 'tape';
 
 test('exports an instance', t => {

@@ -2,7 +2,7 @@
   "name": "tiny-emitter",
   "version": "2.0.2",
   "description": "A tiny (less than 1k) event emitter library",
-  "main": "index.js",
+  "main": "tiny-emitter.js",
   "scripts": {
     "test": "NODE_ENV=test tape -r babel-register test/*.js | tap-format-dot",
     "bundle": "node_modules/.bin/browserify index.js > dist/tinyemitter.js -s TinyEmitter && echo 'Bundled'",
