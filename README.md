@@ -7,32 +7,29 @@ A tiny (less than 1k) event emitter library.
 ### npm
 
 ```
-npm install tiny-emitter --save
+npm i -s tiny-emitter
 ```
 
 ## Usage
 
 ```js
-var Emitter = require('tiny-emitter');
-var emitter = new Emitter();
+const Emitter = require('tiny-emitter');
+const e = new Emitter();
 
-emitter.on('some-event', function (arg1, arg2, arg3) {
- //
-});
+e.on('print', console.log);
+e.on('print-2', s => console.log(s));
 
-emitter.emit('some-event', 'arg1 value', 'arg2 value', 'arg3 value');
+e.emit('print', 'hey', 'bro'); // Terminal: hey, bro
+e.emit('print-2', 'well hello there'); // Terminal: well hello there
 ```
 
 Alternatively, you can skip the initialization step by requiring `tiny-emitter/instance` instead. This pulls in an already initialized emitter.
 
 ```js
-var emitter = require('tiny-emitter/instance');
+const e = require('tiny-emitter/instance');
 
-emitter.on('some-event', function (arg1, arg2, arg3) {
- //
-});
-
-emitter.emit('some-event', 'arg1 value', 'arg2 value', 'arg3 value');
+e.emit('foo', 'bar');
+// See first example for usage show
 ```
 
 ## Instance Methods
@@ -42,7 +39,7 @@ emitter.emit('some-event', 'arg1 value', 'arg2 value', 'arg3 value');
 Subscribe to an event
 
 * `event` - the name of the event to subscribe to
-* `callback` - the function to call when event is emitted
+* `fn` - the function to call when event is emitted
 * `context` - (OPTIONAL) - the context to bind the event callback to
 
 ### once(event, callback[, context])
@@ -50,7 +47,7 @@ Subscribe to an event
 Subscribe to an event only **once**
 
 * `event` - the name of the event to subscribe to
-* `callback` - the function to call when event is emitted
+* `fn` - the function to call when event is emitted
 * `context` - (OPTIONAL) - the context to bind the event callback to
 
 ### off(event[, callback])
@@ -58,7 +55,7 @@ Subscribe to an event only **once**
 Unsubscribe from an event or all events. If no callback is provided, it unsubscribes you from all events.
 
 * `event` - the name of the event to unsubscribe from
-* `callback` - the function used when binding to the event
+* `fn` - the function used when binding to the event
 
 ### emit(event[, arguments...])
 
