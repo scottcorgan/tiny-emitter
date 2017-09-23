@@ -1,2 +1,1 @@
-var E = require('./index.js');
-module.exports = new E();
+module.exports = new (require('./index'))()
