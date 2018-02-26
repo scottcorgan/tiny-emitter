@@ -1,4 +1,4 @@
-function E() {
+function E () {
   // Keep this empty so it's easier to inherit from
   // (via https://github.com/lipsmack from https://github.com/scottcorgan/tiny-emitter/issues/3)
 }
@@ -17,7 +17,7 @@ E.prototype = {
 
   once: function (name, callback, ctx) {
     var self = this;
-    function listener() {
+    function listener () {
       self.off(name, listener);
       callback.apply(ctx, arguments);
     };
