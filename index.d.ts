@@ -1,8 +1,6 @@
-declare class EventEmitter {
-  on   (event: string, callback: Function, ctx?: any): EventEmitter;
-  once (event: string, callback: Function, ctx?: any): EventEmitter;
-  emit (event: string, ...args: any[]): EventEmitter;
-  off  (event: string, callback?: Function): EventEmitter;
+export declare class TinyEmitter {
+  on(event: string, callback: Function, ctx?: any): this;
+  once(event: string, callback: Function, ctx?: any): this;
+  emit(event: string, ...args: any[]): this;
+  off(event: string, callback?: Function): this;
 }
-
-export = EventEmitter

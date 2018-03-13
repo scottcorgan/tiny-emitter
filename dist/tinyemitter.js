@@ -65,6 +65,7 @@ E.prototype = {
 };
 
 module.exports = E;
+module.exports.TinyEmitter = E;
 
 },{}]},{},[1])(1)
 });
