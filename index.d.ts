@@ -3,4 +3,5 @@ export declare class TinyEmitter {
   once(event: string, callback: Function, ctx?: any): this;
   emit(event: string, ...args: any[]): this;
   off(event: string, callback?: Function): this;
+  removeAll():this;
 }
