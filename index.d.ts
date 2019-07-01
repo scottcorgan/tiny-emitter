@@ -12,4 +12,4 @@ interface TinyEmitterStatic {
 
 declare const Emitter: TinyEmitterStatic;
 
-export = Emitter;
+export default Emitter;
