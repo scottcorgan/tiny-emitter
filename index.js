@@ -9,11 +9,11 @@ class TinyEmitter {
    *
    * @param {String} name
    * @param {Function} callback
-   * @param {JSON} ctx
+   * @param {Object} [ctx={}]
    * @returns {TinyEmitter}
    * @memberof TinyEmitter
    */
-  on(name, callback, ctx) {
+  on(name, callback, ctx = {}) {
     const e = this.e || (this.e = {});
 
     (e[name] || (e[name] = [])).push({
@@ -29,11 +29,11 @@ class TinyEmitter {
    *
    * @param {String} name
    * @param {Function} callback
-   * @param {JSON} ctx
+   * @param {Object} [ctx={}]
    * @returns {TinyEmitter}
    * @memberof TinyEmitter
    */
-  once(name, callback, ctx) {
+  once(name, callback, ctx = {}) {
     const listener = () => {
       this.off(name, listener);
       callback.apply(ctx, arguments);
@@ -66,7 +66,7 @@ class TinyEmitter {
    * Remove an event listener.
    *
    * @param {String} name
-   * @param {Function} callback
+   * @param {Function} [callback] Callback is optional, without it all listeners are removed for this event.
    * @returns {TinyEmitter}
    * @memberof TinyEmitter
    */

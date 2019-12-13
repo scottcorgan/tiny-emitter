@@ -1,6 +1,6 @@
-var Emitter = require('../index');
-var emitter = require('../instance');
-var test = require('tape');
+import test from 'tape';
+import Emitter from '../index';
+import emitter from '../instance';
 
 test('subscribes to an event', function (t) {
   var emitter = new Emitter();
@@ -24,7 +24,7 @@ test('subscribes to an event with context', function (t) {
   emitter.emit('test');
 });
 
-test('subscibes only once to an event', function (t) {
+test('subscribes only once to an event', function (t) {
   var emitter = new Emitter();
 
   emitter.once('test', function () {
@@ -151,7 +151,7 @@ test('removes an event inside another event', function (t) {
 
     emitter.off('test');
 
-    t.notOk(emitter.e.test, 0, 'event is gone from list');
+    t.notOk(emitter.e.test, 'event is gone from list');
     t.end();
   });
 
