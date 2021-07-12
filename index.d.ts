@@ -1,8 +1,10 @@
-export declare class TinyEmitter {
-  on(event: string, callback: Function, ctx?: any): this;
-  once(event: string, callback: Function, ctx?: any): this;
-  emit(event: string, ...args: any[]): this;
-  off(event: string, callback?: Function): this;
+type Arguments<T> = [T] extends [(...args: infer U) => any] ? U : [T] extends [void] ? [] : [T];
+
+export declare class TinyEmitter<T extends any = any> {
+  on<E extends keyof T>(event: E, callback: T[E], ctx?: any): this;
+  once<E extends keyof T>(event: E, callback: T[E], ctx?: any): this;
+  emit<E extends keyof T>(event: E, ...args: Arguments<T[E]>): this;
+  off<E extends keyof T>(event: E, callback?: T[E]): this;
 }
 
 interface TinyEmitterStatic {
