@@ -2,7 +2,7 @@ type KeyType = string | symbol;
 
 type EventHandler<Args extends unknown[] = unknown[]> = (...args: Args) => void;
 
-declare class TinyEmitter<
+export declare class TinyEmitter<
   T extends Record<KeyType, EventHandler> = Record<KeyType, EventHandler>
 > {
   constructor();
@@ -20,8 +20,4 @@ declare class TinyEmitter<
   off<E extends keyof T>(eventName: E, callback?: T[E]): this;
 }
 
-declare namespace TinyEmitter {
-  const TinyEmitter: typeof TinyEmitter;
-}
-
-export = TinyEmitter;
+export default TinyEmitter;
