@@ -91,6 +91,8 @@ emitter.emit("custom-event", 42, "hello"); // ✅ Correct usage
 
 ```typescript
 import { TinyEmitter } from "tiny-emitter";
+// Or
+// import TinyEmitter from "tiny-emitter";
 
 // 1. Define event type
 type AppEvents = {
