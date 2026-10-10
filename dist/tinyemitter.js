@@ -6,7 +6,7 @@ function E () {
 
 E.prototype = {
   on: function (name, callback, ctx) {
-    var e = this.e || (this.e = {});
+    var e = this.e || (this.e = Object.create(null));
 
     (e[name] || (e[name] = [])).push({
       fn: callback,
@@ -29,7 +29,7 @@ E.prototype = {
 
   emit: function (name) {
     var data = [].slice.call(arguments, 1);
-    var evtArr = ((this.e || (this.e = {}))[name] || []).slice();
+    var evtArr = ((this.e || (this.e = Object.create(null)))[name] || []).slice();
     var i = 0;
     var len = evtArr.length;
 
@@ -41,7 +41,7 @@ E.prototype = {
   },
 
   off: function (name, callback) {
-    var e = this.e || (this.e = {});
+    var e = this.e || (this.e = Object.create(null));
     var evts = e[name];
     var liveEvents = [];
 

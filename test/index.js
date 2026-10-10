@@ -215,3 +215,23 @@ test('exports an instance', function (t) {
   t.ok(emitter instanceof Emitter, 'an instance of the Emitter class');
   t.end();
 });
+
+
+test('prototype property names are ordinary event names', function (t) {
+  ['__proto__', 'constructor', 'toString', 'hasOwnProperty'].forEach(function (name) {
+    var emitter = new Emitter();
+    var calls = [];
+    var callback = function (value) { calls.push(value); };
+
+    t.doesNotThrow(function () { emitter.emit(name); }, 'unsubscribed ' + name);
+    t.doesNotThrow(function () { emitter.off(name, callback); }, 'remove unsubscribed ' + name);
+    emitter.on(name, callback);
+    emitter.once(name, function (value) { calls.push('once:' + value); });
+    emitter.emit(name, 'first');
+    emitter.emit(name, 'second');
+    emitter.off(name, callback);
+    emitter.emit(name, 'third');
+    t.deepEqual(calls, ['first', 'once:first', 'second'], name + ' follows the listener lifecycle');
+  });
+  t.end();
+});
